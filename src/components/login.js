@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import { browserHistory } from 'react-router'
 import axios from 'axios';
-import './css/login.css';
+import '../css/login.css';
 
 class Login extends Component {
 
@@ -16,8 +17,6 @@ class Login extends Component {
       }
       getNumber();
   }
-
-
   render(){
     return (
       <div id="Login">
@@ -29,8 +28,8 @@ class Login extends Component {
 }
 
 class Section extends Component {
-  handleClick(){
-
+  renderPage = () => {
+    browserHistory.push('mypage')
   }
   render(){
     return (
@@ -42,7 +41,7 @@ class Section extends Component {
               <p>내가 있는 이곳에서 시작하다</p>
               <input type="text" className="login_id" name="username" placeholder="사용자 이름" required />
               <input type="password" className="login_pw" name="userpassword" placeholder="비밀번호" required />
-              <input type="submit" className="login_btn" value="로그인" />
+              <input type="submit" className="login_btn" value="로그인" onClick={this.renderPage}/>
             </form>
           </div>
         </section>

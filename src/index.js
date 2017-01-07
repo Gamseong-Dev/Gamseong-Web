@@ -1,19 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk'
+import Async from './middlewares/async'
+import {Mypage, Login, App} from './components';
 import './css/index.css';
-import App from './App';
-import Login from './login';
-import MyPage from './mypage';
+
+import reducers from './reducers';
+import {fetchFeeds} from './actions/feeds'
+
+const createStoreWithMiddleware = applyMiddleware(reduxThunk, Async)(createStore);
+const store = createStoreWithMiddleware(reducers, window.devToolsExtension ? window.devToolsExtension() : f => f)
+
+store.dispatch(fetchFeeds())
 
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Login} />
-      <Route path="app" component={App} />
-      <Route path="login" component={Login} />
-      <Route path="mypage" component={MyPage} />
-    </Route>
-  </Router>,
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Login} />
+        <Route path="app" component={App} />
+        <Route path="login" component={Login} />
+        <Route path="mypage" component={Mypage} />
+      </Route>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
