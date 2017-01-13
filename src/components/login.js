@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { browserHistory } from 'react-router'
 import axios from 'axios';
 import '../css/login.css';
+import Footer from './Footer';
 
 class Login extends Component {
 
@@ -9,12 +10,12 @@ class Login extends Component {
       var param = {
         account: 'qkrekwjd9715@hanmail.net',
         password: 'qpalzm50'
-      }
+      };
 
       let getNumber = () => {
           axios.post('http://52.78.110.20:8080/gamseongAccounts/users/login', param)
             .then(response => {console.log(response);});
-      }
+      };
       getNumber();
   }
   render(){
@@ -29,7 +30,7 @@ class Login extends Component {
 
 class Section extends Component {
   renderPage = () => {
-    browserHistory.push('mypage')
+    browserHistory.push('mypage');
   }
   render(){
     return (
@@ -45,25 +46,6 @@ class Section extends Component {
             </form>
           </div>
         </section>
-      </div>
-    );
-  }
-}
-
-class Footer extends Component {
-  render(){
-    return (
-      <div id="footer">
-        <footer>
-          <div className="footer_cont">
-            <ul>
-              <li><a href="#">감성여행 정보</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">개인정보보호</a></li>
-            </ul>
-            <p>감성여행</p>
-          </div>
-        </footer>
       </div>
     );
   }

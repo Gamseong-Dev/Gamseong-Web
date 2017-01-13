@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import '../css/mypage.css';
-import Feed from './feed'
+import Feed from './feed';
 
 
 class Section extends Component {
   render(){
-    const {feeds} = this.props
+    const {feeds} = this.props;
     return (
       <section>
         {feeds.length > 0 && <Feed feeds={feeds}/>}
@@ -14,4 +13,4 @@ class Section extends Component {
   }
 }
 
-export default Section
+export default Section;

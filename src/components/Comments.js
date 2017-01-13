@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 
 const Comments = () => (
   <div className="article_comment">
@@ -9,6 +8,6 @@ const Comments = () => (
       <p className="comm_content">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
     </div>
   </div>
-)
+);
 
-export default Comments
+export default Comments;

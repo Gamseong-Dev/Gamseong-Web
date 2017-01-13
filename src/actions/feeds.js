@@ -18,9 +18,9 @@ export const completeFeedsFetch = (feeds) => {
 
 
 export const fetchFeeds = () => (dispatch, getState) => {
-  dispatch(startFeedsFetch())
-  const ROOT_URL = 'http://52.78.110.20:8080/gamseong/feeds/locations/S031031/users/069357'
+  dispatch(startFeedsFetch());
+  const ROOT_URL = 'http://52.78.110.20:8080/gamseong/feeds/locations/S031031/users/069357';
   axios.get(ROOT_URL).then((feeds) => {
-     dispatch(completeFeedsFetch(feeds))
-   })
+    dispatch(completeFeedsFetch(feeds))
+  });
 }
