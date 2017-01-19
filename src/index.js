@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import reduxThunk from 'redux-thunk'
-import Async from './middlewares/async'
+import reduxThunk from 'redux-thunk';
+import Async from './middlewares/async';
 import {Mypage, Login, App} from './components';
-import './css/index.css';
+import './index.css';
 
 import reducers from './reducers';
-import {fetchFeeds} from './actions/feeds'
+import {fetchFeeds} from './actions/feeds';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, Async)(createStore);
-const store = createStoreWithMiddleware(reducers, window.devToolsExtension ? window.devToolsExtension() : f => f)
+const store = createStoreWithMiddleware(reducers, window.devToolsExtension ? window.devToolsExtension() : f => f);
 
-store.dispatch(fetchFeeds())
+store.dispatch(fetchFeeds());
 
 ReactDOM.render(
   <Provider store={store}>

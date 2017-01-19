@@ -9,5 +9,5 @@ export default function ({dispatch}) {
           const newAction = { ...action, payload: response }
           dispatch(newAction)
         })
-  }
+  };
 }
