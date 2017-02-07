@@ -12,7 +12,7 @@ export const getAccount = (param) => (dispatch) => {
         if(result === 'fail'){
           dispatch({type: LOGIN.USER_LOG_IN_ERR})
           browserHistory.push('login')
-          alert('로그인을 다시 해주세요.')
+          alert('아이디 혹은 비밀번호를 다시 확인하세요.')
         }
         if(result === 'success'){
           dispatch({type: LOGIN.USER_LOG_IN})

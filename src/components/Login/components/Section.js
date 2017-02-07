@@ -9,17 +9,27 @@ class Section extends Component {
       password: ''
     }
   }
+
   onChange = e => {
     this.setState({
     [e.target.name]: e.target.value
     })
   }
+
   onSubmit = e => {
     e.preventDefault()
     const {getAccount} = this.props
     getAccount(this.state)
   }
+
   render(){
+
+    // 로그아웃 한 후 다시 로그인 페이지로 돌아왔을 때 페이지 뒤로가기 막기
+    history.pushState(null, null, location.href);
+    window.onpopstate = function(e){
+      history.go(1);
+    }
+
     return (
       <div id="section">
         <section>
