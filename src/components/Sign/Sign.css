@@ -1,0 +1,22 @@
+/* layout */
+#Sign {margin:0 auto; width:100%; height:100%;}
+#Sign section {margin:0 auto; padding:10% 0; max-width:900px; height:100%;}
+
+/* section */
+#Sign .signForm {margin:0 auto; margin-bottom:10px; padding:35px; width:280px; height:100%; background:#fff; border:1px solid #eee; border-radius:5px;}
+#Sign .signForm form {position:relative; text-align:center;}
+#Sign .signForm form h2 {font-size:36px; letter-spacing:-3px; color:#FF7F00;}
+#Sign .signForm form p {margin:5px 0 20px; font-size:16px; letter-spacing:-1px; color:#FF7F00;}
+#Sign .signForm form p.or {display:inline-block; margin:30px 0 25px; color:#777;}
+#Sign .signForm form input {margin-top:5px; padding:3px 10px; width:100%; height:35px; border:1px solid #ddd; border-radius:2px; font-size:16px; box-sizing:border-box;}
+#Sign .signForm form button {margin-top:5px; padding:3px 10px; width:100%; height:35px; border:1px solid #ddd; border-radius:2px; font-size:16px; color:#fff; font-weight:bold; box-sizing:border-box; cursor:pointer;}
+#Sign .signForm form button.facebook_login_btn {background:#3F5C9A; border:1px solid #3F5C9A;}
+#Sign .signForm form button.sign_btn {background:#FF850D; border:1px solid #FF850D;}
+
+#Sign .doLoginForm {margin:0 auto; margin-bottom:30px; padding:20px 35px; width:280px; height:100%; background:#fff; border:1px solid #eee; border-radius:5px;}
+#Sign .doLoginForm p {text-align:center; font-size:14px;}
+#Sign .doLoginForm p button {color:#3897f0; background:none; border:none;}
+#Sign .doLoginForm p button:hover {text-decoration:underline;}
+
+#Sign .googleplay {margin:0 auto; width:280px; height:100%; text-align:center;}
+#Sign .googleplay img {width:120px; height:auto;}

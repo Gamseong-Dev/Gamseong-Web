@@ -33,6 +33,7 @@ class Header extends Component {
             <div className="header_nav">
               <ul>
                 <li><button onClick={this.toggleModal}><img src={require('../../images/per.png')} alt="상태 아이콘" /></button></li>
+                <li><button onClick={this.toggleModal}><img src={require('../../images/logout.png')} alt="로그아웃 아이콘" /></button></li>
               </ul>
             </div>
           </div>

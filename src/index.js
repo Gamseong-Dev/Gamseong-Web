@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import Async from './middlewares/async';
-import {Mypage, Login, App} from './components';
+import {App, Mypage, Login, Sign} from './components';
 import './index.css';
 
 import reducers from './reducers';
@@ -23,6 +23,7 @@ ReactDOM.render(
         <IndexRoute component={Login} />
         <Route path="app" component={App} />
         <Route path="login" component={Login} />
+        <Route path="sign" component={Sign} />
         <Route path="mypage" component={Mypage} />
       </Route>
     </Router>
