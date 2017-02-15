@@ -6,19 +6,33 @@ class Header extends Component {
   constructor(props){
     super(props);
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      modalText: ''
     }
 
-    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleModalProfileEdit = this.toggleModalProfileEdit.bind(this);
+    this.toggleModalLogout = this.toggleModalLogout.bind(this);
     this.goMain = this.goMain.bind(this);
   }
 
-  toggleModal(){
-    this.setState({modalIsOpen: !this.state.modalIsOpen})
+  toggleModalProfileEdit(){
+    this.setState({modalIsOpen: !this.state.modalIsOpen, modalText: '프로필 편집'})
+  }
+
+  toggleModalLogout(){
+    this.setState({modalIsOpen: !this.state.modalIsOpen, modalText: '로그아웃'})
   }
 
   goMain(){
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'http://localhost:3000/login';
+  }
+
+  goProfileEdit(){
+    window.location.href = 'http://localhost:3000/edit';
+  }
+
+  goMyPage(){
+    window.location.href = 'http://localhost:3000/mypage';
   }
 
   render(){
@@ -28,12 +42,13 @@ class Header extends Component {
           <div className="header_cont">
             <div className="header_logo">
               <img src={require('../../images/logo.png')} alt="감성여행 로고 이미지" />
-              <h1>감성여행</h1>
+              <h1  onClick={this.goMyPage}>감성여행</h1>
             </div>
             <div className="header_nav">
               <ul>
-                <li><button onClick={this.toggleModal}><img src={require('../../images/per.png')} alt="상태 아이콘" /></button></li>
-                <li><button onClick={this.toggleModal}><img src={require('../../images/logout.png')} alt="로그아웃 아이콘" /></button></li>
+                <li><button onClick={this.goMyPage}><img src={require('../../images/mypage.png')} alt="마이페이지 아이콘" /></button></li>
+                <li><button onClick={this.toggleModalProfileEdit}><img src={require('../../images/per.png')} alt="상태 아이콘" /></button></li>
+                <li><button onClick={this.toggleModalLogout}><img src={require('../../images/logout.png')} alt="로그아웃 아이콘" /></button></li>
               </ul>
             </div>
           </div>
@@ -41,8 +56,16 @@ class Header extends Component {
         <Modal open={this.state.modalIsOpen}>
           <div className="modal">
             <ul>
-              <li><button onClick={this.goMain}>로그아웃</button></li>
-              <li><button onClick={this.toggleModal}>취소</button></li>
+              <li>
+                <button onClick={this.state.modalText === '프로필 편집' ? this.goProfileEdit : this.goMain}>
+                  {this.state.modalText}
+                </button>
+              </li>
+              <li>
+                <button onClick={this.state.modalText === '프로필 편집' ? this.toggleModalProfileEdit : this.toggleModalLogout}>
+                  취소
+                </button>
+              </li>
             </ul>
           </div>
         </Modal>

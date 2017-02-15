@@ -3,8 +3,6 @@ import './Comments.css';
 
 class Comments extends Component {
   render(){
-
-
     return (
       <div className="article_comment">
         <div className="comm">

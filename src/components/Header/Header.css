@@ -1,16 +1,16 @@
 /* layout */
-#MyPage header {margin:0 auto; width:100%; height:70px; background:#fff; border-bottom:1px solid #ddd;}
+header {margin:0 auto; width:100%; height:70px; background:#fff; border-bottom:1px solid #ddd;}
 
 /* header */
-#MyPage .header_cont {position:relative; margin:0 auto; max-width:1000px;}
-#MyPage .header_cont .header_logo {display:inline-block;}
-#MyPage .header_cont .header_logo img {margin-top:-12px; margin-left:10px; width:70px; height:auto;}
-#MyPage .header_cont .header_logo h1 {display:inline-block; margin-left:10px; height:70px; line-height:70px; color:#FF7F00; font-size:26px; letter-spacing:-3px; cursor:pointer;}
-#MyPage .header_cont .header_nav {position:absolute; top:0; right:0;}
-#MyPage .header_cont .header_nav ul {overflow:hidden;}
-#MyPage .header_cont .header_nav ul li {float:left; margin-top:15px;}
-#MyPage .header_cont .header_nav ul li button {display:block; padding:10px; background:#fff; border:0;}
-#MyPage .header_cont .header_nav ul li button img {width:auto; height:25px;}
+.header_cont {position:relative; margin:0 auto; max-width:1000px;}
+.header_cont .header_logo {display:inline-block;}
+.header_cont .header_logo img {margin-top:-12px; margin-left:10px; width:70px; height:auto;}
+.header_cont .header_logo h1 {display:inline-block; margin-left:10px; height:70px; line-height:70px; color:#FF7F00; font-size:26px; letter-spacing:-3px; cursor:pointer;}
+.header_cont .header_nav {position:absolute; top:0; right:0;}
+.header_cont .header_nav ul {overflow:hidden;}
+.header_cont .header_nav ul li {float:left; margin-top:15px;}
+.header_cont .header_nav ul li button {display:block; padding:10px; background:#fff; border:0;}
+.header_cont .header_nav ul li button img {width:auto; height:25px;}
 
 /* modal */
 .modal {
