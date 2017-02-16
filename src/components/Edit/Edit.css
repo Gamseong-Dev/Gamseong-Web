@@ -1,3 +1,7 @@
+/*
+	!important 사용은 IE에서 CSS 코드가 적용되지 않아 강제로 적용시킴
+*/
+
 .react-tabs {
   overflow:hidden;
   position: relative;
@@ -15,22 +19,22 @@
   float:left;
   display:inline-block;
   position:relative;
-  margin:0;
+  margin:0 !important;
   width:20%; height:100%;
   border-right:1px solid #ddd;
-  border-bottom:0;
+  border-bottom:0 !important;
 }
 .react-tabs [role=tab] {
   display: block;
   position: relative;
-  bottom: 0;
-  padding: 20px 20px 20px 40px;
-  border: none;
-  border-left: 3px solid #eee;
+  bottom: 0 !important;
+  padding: 20px 20px 20px 40px !important;
+  border: none !important;
+  border-left: 3px solid #eee !important;
   border-radius:0;
   cursor: pointer;
 }
-.react-tabs [role=tab][aria-selected=true] {font-weight: bold; color:#333; border-left: 3px solid #FF7F00; border-radius:0;}
+.react-tabs [role=tab][aria-selected=true] {font-weight: bold; color:#333 !important; border-left: 3px solid #FF7F00 !important; border-radius:0 !important;}
 
 .react-tabs .ReactTabs__TabPanel {
   margin-left:20%;
@@ -59,7 +63,7 @@
 .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {content:""; position:relative; display:block; width:28px; height:28px;}
 .tgl + .tgl-btn:after {left:0;}
 .tgl + .tgl-btn:before {display:none;}
-.tgl:checked + .tgl-btn:after {left:50%;}
+.tgl:checked + .tgl-btn:after {left:53%;}
 .tgl-light + .tgl-btn {padding:2px !important; background:#eee; border-radius:2em; vertical-align:-10px; -webkit-transition:all .4s ease; transition:all .4s ease;}
 .tgl-light + .tgl-btn:after {background:#fff; border-radius:50%; -webkit-transition:all .4s ease; transition:all .4s ease;}
 .tgl-light:checked + .tgl-btn {background:#FF7F00;}
@@ -71,7 +75,7 @@
     width: 95%;
   }
   .react-tabs [role=tab] {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 10% !important;
+    padding-right: 10% !important;
   }
 }

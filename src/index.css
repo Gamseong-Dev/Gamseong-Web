@@ -43,49 +43,13 @@ label{cursor:pointer;}
 @font-face{
 	font-family:'NanumGothic';
 	src:url('./fonts/NanumGothic.ttf');
-}
-
-@font-face{
-	font-family:'NanumGothicBold';
-	src:url('./fonts/NanumGothicBold.ttf');
-}
-
-@font-face{
-	font-family:'RobotoItalic';
-	src:url('./fonts/Roboto-Italic.ttf');
+	src:url('./fonts/NanumGothic.eot');
+	src:local(※), url('./fonts/NanumGothic.woff') format('woff');
 }
 
 @font-face{
 	font-family:'RobotoRegular';
 	src:url('./fonts/Roboto-Regular.ttf');
-}
-
-@font-face{
-	font-family:'RobotoBold';
-	src:url('./fonts/Roboto-Bold.ttf');
-}
-
-@font-face{
-	font-family:'RobotoMedium';
-	src:url('./fonts/Roboto-Medium.ttf');
-}
-
-@font-face{
-	font-family:'RobotoThin';
-	src:url('./fonts/Roboto-Thin.ttf');
-}
-
-@font-face{
-	font-family:'RobotoThinItalic';
-	src:url('./fonts/Roboto-ThinItalic.ttf');
-}
-
-@font-face{
-	font-family:'RobotoMediumItalic';
-	src:url('./fonts/Roboto-MediumItalic.ttf');
-}
-
-@font-face{
-	font-family:'RobotoBoldItalic';
-	src:url('./fonts/Roboto-BoldItalic.ttf');
+	src:url('./fonts/Roboto-Regular.eot');
+	src:local(※), url('./fonts/Roboto-Regular.woff') format('woff');
 }
