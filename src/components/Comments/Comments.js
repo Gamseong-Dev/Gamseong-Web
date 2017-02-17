@@ -8,7 +8,7 @@ class Comments extends Component {
         <div className="comm">
           <img src={require('../../images/friends1.png')} className="comm_img" alt="작성자 이미지" />
           <span className="comm_name">friends1</span>
-          <p className="comm_content">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
+          <p className="comm_content">댓글임</p>
         </div>
       </div>
     );

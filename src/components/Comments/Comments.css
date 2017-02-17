@@ -1,5 +1,5 @@
-#MyPage article .article_comment {padding:20px 20px 15px 20px; background:#fff;}
-#MyPage article .article_comment .comm {margin-bottom:5px;}
-#MyPage article .article_comment .comm img.comm_img {width:30px; height:30px; border:1px solid #eee; border-radius:50%; box-sizing:border-box;}
+#MyPage article .article_comment {padding:0 20px; background:#eee;}
+/*#MyPage article .article_comment .comm {margin-bottom:5px;}*/
+#MyPage article .article_comment .comm img.comm_img {margin:10px 0; width:30px; height:30px; border:1px solid #ddd; border-radius:50%; box-sizing:border-box;}
 #MyPage article .article_comment .comm span.comm_name {display:inline-block; margin-left:10px; font-weight:bold;}
 #MyPage article .article_comment .comm p.comm_content {display:inline-block; margin-left:10px;}
