@@ -41,6 +41,8 @@ class Section extends Component {
             <form action="" method="">
               <h2>감성여행</h2>
               <p>내가 있는 이곳에서 시작하다</p>
+              <button className="facebook_login_btn">페이스북으로 로그인</button>
+              <p className="or">또는</p>
               <input type="email" className="login_id" name="account" value={this.state.account} placeholder="이메일 주소" onChange={this.onChange} required />
               <input type="password" className="login_pw" name="password" value={this.state.password} placeholder="비밀번호" onChange={this.onChange} required />
               <button className="login_btn" onClick={this.onSubmit}>로그인</button>

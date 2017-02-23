@@ -27,7 +27,7 @@ class Section extends Component {
             <form action="" method="">
               <h2>감성여행</h2>
               <p>내가 있는 이곳에서 시작하다</p>
-              <button className="facebook_login_btn">페이스북으로 로그인</button>
+              <button className="facebook_login_btn">페이스북으로 가입하기</button>
               <p className="or">페이스북 계정이 없으면</p>
               <input type="email" className="sign_id" name="account" placeholder="이메일 주소" required />
               <input type="password" className="sign_pw" name="password" placeholder="비밀번호" required />
