@@ -24,15 +24,15 @@ class Header extends Component {
   }
 
   goMain(){
-    window.location.href = 'http://localhost:3000/login';
+    window.location.href = '/login';
   }
 
   goProfileEdit(){
-    window.location.href = 'http://localhost:3000/edit';
+    window.location.href = '/edit';
   }
 
   goMyPage(){
-    window.location.href = 'http://localhost:3000/mypage';
+    window.location.href = '/mypage';
   }
 
   render(){

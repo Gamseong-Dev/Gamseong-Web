@@ -16,7 +16,7 @@ class Sign extends Component {
 class Section extends Component {
 
   goLoginPage(){
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = '/';
   }
 
   render(){

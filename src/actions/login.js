@@ -15,7 +15,11 @@ export const getAccount = (param) => (dispatch) => {
           alert('아이디 혹은 비밀번호를 다시 확인하세요.')
         }
         if(result === 'success'){
-          dispatch({type: LOGIN.USER_LOG_IN})
+          dispatch({type: LOGIN.USER_LOG_IN, user: response.data.user})
+          localStorage.setItem('userId', response.data.user.id)
+          localStorage.setItem('userAcct', response.data.user.account)
+          localStorage.setItem('userName', response.data.user.name)
+          localStorage.setItem('userImgUrl', response.data.user.imageUrl)
           browserHistory.push('mypage')
         }
       })

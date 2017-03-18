@@ -29,13 +29,16 @@ class Feed extends Component {
         </div>
 
         <div className="article_comment">
-          <div className="comm">
-            {feed.reply.length !== 0 && feed.reply[0].user.imageUrl !== null? <img src={feed.reply[0].user.imageUrl} className="comm_img" alt="작성자 이미지" /> : null}
-            {feed.reply.length !== 0 && feed.reply[0].user.imageUrl === null? <img src={require('../../images/person.png')} className="comm_img" alt="작성자 이미지" /> : null}
-            {feed.reply.length !== 0 ? <span className="comm_name">{feed.reply.length === 0 ? '' : feed.reply[0].user.name}</span> : null}
-            {feed.reply.length !== 0 ? <p className="comm_content">{feed.reply.length === 0 ? '' : feed.reply[0].contents}</p> : null }
+            {/* {console.log(feed.reply)} */}
+            {feed.reply.map((re, i) => (
+              <div className="comm" key={i}>
+                <img src={re.user.imageUrl === null ? require('../../images/person.png') : re.user.imageUrl } className="comm_img" alt="작성자 이미지" />
+                <span className="comm_name">{re.user.name}</span>
+                <p className="comm_content">{re.contents}</p>
+              </div>
+            ) )}
           </div>
-        </div>
+
 
       </article>
     ));

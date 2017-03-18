@@ -9,12 +9,10 @@ import {App, Mypage, Login, Sign, Edit} from './components';
 import './index.css';
 
 import reducers from './reducers';
-import {fetchFeeds} from './actions/feeds';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk, Async)(createStore);
 const store = createStoreWithMiddleware(reducers, window.devToolsExtension ? window.devToolsExtension() : f => f);
 
-store.dispatch(fetchFeeds());
 
 ReactDOM.render(
   <Provider store={store}>

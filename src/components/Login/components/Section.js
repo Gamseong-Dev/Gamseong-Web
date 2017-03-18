@@ -23,7 +23,7 @@ class Section extends Component {
   }
 
   goSignPage(){
-    window.location.href = 'http://localhost:3000/sign';
+    window.location.href = '/sign';
   }
 
   render(){
