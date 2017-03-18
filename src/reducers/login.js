@@ -7,6 +7,8 @@ export default function (state = {}, action) {
       return { ...state, authenticated: true, user: action.user}
     case types.USER_LOG_IN_ERR:
       return { ...state, authenticated: false}
+    case types.USER_LOG_OUT:
+      return { ...state, authenticated: false}
     default:
       return state
   }

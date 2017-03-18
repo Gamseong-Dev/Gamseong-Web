@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import * as actions from '../../actions/login'
 import Modal from '../Modal/Modal';
 import './Header.css';
 
@@ -24,6 +26,7 @@ class Header extends Component {
   }
 
   goMain(){
+    this.props.userLogOut()
     window.location.href = '/login';
   }
 
@@ -74,4 +77,14 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+function mapStateToProps(state, ownProps){
+  return {
+    feeds: state.feeds,
+    user: state.login,
+  }
+}
+
+export default connect(mapStateToProps, actions)(Header);
+
+// export default Header;

@@ -24,3 +24,11 @@ export const getAccount = (param) => (dispatch) => {
         }
       })
 };
+
+export const userLogOut = () => (dispatch) => {
+  localStorage.setItem('userId', null)
+  localStorage.setItem('userAcct', null)
+  localStorage.setItem('userName', null)
+  localStorage.setItem('userImgUrl', null)
+  dispatch({type: LOGIN.USER_LOG_OUT})
+}
