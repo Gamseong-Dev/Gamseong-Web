@@ -34,7 +34,8 @@ var Section = React.createClass({
 				<Tabs>
 					<TabList>
 						<Tab>프로필 편집</Tab>
-						<Tab>설정</Tab>
+            <Tab>비밀번호 변경</Tab>
+						<Tab>알림</Tab>
 					</TabList>
 
 					<TabPanel>
@@ -43,9 +44,13 @@ var Section = React.createClass({
               <h2>닉네임 변경</h2>
   						<input type="text" placeholder="닉네임 들어가야함" />
             </div>
+            <button className="submit">완료</button>
+					</TabPanel>
+
+          <TabPanel>
             <div className="cont_wrap">
               <h2>비밀번호 변경</h2>
-  						<input type="password" placeholder="비밀번호를 입력해주세요" />
+              <input type="password" placeholder="비밀번호를 입력해주세요" />
               <input type="password" placeholder="비밀번호를 다시 입력해주세요" />
             </div>
             <button className="submit">완료</button>
@@ -53,12 +58,7 @@ var Section = React.createClass({
 
 					<TabPanel>
             <div className="cont_wrap">
-  						<h2>옵션</h2>
-              <p>쪽지</p>
-              <input type="checkbox" id="cb1" className="tgl tgl-light" name="memo" />
-              <label className="tgl-btn" htmlFor="cb1"></label>
-              <br />
-              <p>알림</p>
+  						<h2>알림</h2>
               <input type="checkbox" id="cb2" className="tgl tgl-light" name="alert" />
               <label className="tgl-btn" htmlFor="cb2"></label>
             </div>
