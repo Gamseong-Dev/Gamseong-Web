@@ -1,0 +1,24 @@
+/* Login, Sign */
+footer {margin:0 auto; height:50px;}
+.footer_cont {position:relative; margin:0 auto; width:350px; height:100%;}
+.footer_cont ul {overflow:hidden; display:inline-block;}
+.footer_cont ul li {float:left; height:40px; line-height:40px;}
+.footer_cont ul li a {display:block; padding:5px;}
+.footer_cont p {position:absolute; top:0; right:0; padding:0 5px; height:50px; line-height:50px; color:#FF7F00; font-weight:bold;}
+.footer_cont p img {margin-right:3px; width:23px; height:auto;}
+
+
+/* MyPage */
+#MyPage footer {background:#fff; border-top:1px solid #ddd;}
+#MyPage .footer_cont {width:600px;}
+
+/* Edit */
+#Edit footer {background:#fff; border-top:1px solid #ddd;}
+#Edit .footer_cont {width:600px;}
+
+
+/* responsive - @media query */
+@media screen and (max-width: 650px){
+  #MyPage .footer_cont {width:350px;}
+  #Edit .footer_cont {width:350px;}
+}
