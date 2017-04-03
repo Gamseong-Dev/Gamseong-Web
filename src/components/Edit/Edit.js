@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Modal from '../Modal';
 import './Edit.css';
 
 class Edit extends Component {
@@ -76,7 +77,8 @@ class ImageUpload extends Component {
     super(props);
     this.state = {
       file: '',
-      imagePreviewUrl: ''
+      imagePreviewUrl: '',
+      modalVisible: false
     };
   }
 
@@ -89,28 +91,60 @@ class ImageUpload extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
+        imagePreviewUrl: reader.result,
+        modalVisible: false
       });
     }
 
     reader.readAsDataURL(file);
   }
-
+  isSelectCamera = () => {
+    this.setState({modalVisible: true})
+  }
   render(){
     let {imagePreviewUrl} = this.state;
     let imagePreview = null;
 
     if(imagePreviewUrl){
-      imagePreview = (<img src={imagePreviewUrl} id="profile_image" className="profile_image" alt="프로필 사진" />);
+      imagePreview = (<img src={imagePreviewUrl} id="profile_image" className="profile_image" alt="프로필 사진"/>);
     }else{
       imagePreview = (<img src={require('../../images/friends1.png')} id="profile_image" className="profile_image" alt="프로필 사진" />);
     }
 
     return (
-      <div className="cont_wrap">
-        <h2>프로필 사진 변경</h2>
-        {imagePreview}
-        <input type="file" onChange={(e)=>this.handleImageChange(e)} />
+      <div>
+        <div className="cont_wrap">
+          <h2>프로필 사진 변경</h2>
+          <div onClick={this.isSelectCamera} className="profile_image">
+            {imagePreview}
+          </div>
+        </div>
+        <Modal open={this.state.modalVisible}>
+          <div className="modal">
+            <ul>
+              <li>
+                <button>
+                  사진찍기
+                </button>
+              </li>
+              <li>
+                <button onClick={() => this.setState({imagePreviewUrl: undefined, modalVisible: false})}>
+                  현재 사진 삭제
+                </button>
+              </li>
+              <li>
+                <label> 사진업로드
+                  <input type="file" onChange={(e)=>this.handleImageChange(e)} className='file'/>
+                </label>
+              </li>
+              <li>
+                <button onClick={() => this.setState({modalVisible: false})}>
+                  취소
+                </button>
+              </li>
+            </ul>
+          </div>
+        </Modal>
       </div>
     );
   }

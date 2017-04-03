@@ -69,6 +69,16 @@
 .tgl-light:checked + .tgl-btn {background:#FF7F00;}
 
 
+
+.file {
+    position: relative;
+    height: 100%;
+    width: auto;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
 /* responsive - @media query */
 @media screen and (max-width: 1020px){
   .react-tabs {
