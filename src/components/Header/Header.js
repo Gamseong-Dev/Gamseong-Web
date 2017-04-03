@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../../actions/login'
-import Modal from '../Modal/Modal';
+import Modal from '../Modal';
 import './Header.css';
 
 class Header extends Component {
