@@ -25,10 +25,6 @@ var //React       = require('react'),
     TabPanel    = ReactTabs.TabPanel;
 
 var Section = React.createClass({
-  handleChange: function() {
-      return alert("이미지바뀌어야하는데....");
-  },
-
 	render: function () {
 		return (
 			<div>
@@ -43,7 +39,7 @@ var Section = React.createClass({
             <ImageUpload />
             <div className="cont_wrap">
               <h2>닉네임 변경</h2>
-  						<input type="text" placeholder="닉네임 들어가야함" />
+  						<input type="text" placeholder={localStorage.getItem('userName')} />
             </div>
             <button className="submit">완료</button>
 					</TabPanel>
@@ -106,9 +102,9 @@ class ImageUpload extends Component {
     let imagePreview = null;
 
     if(imagePreviewUrl){
-      imagePreview = (<img src={imagePreviewUrl} id="profile_image" className="profile_image" alt="프로필 사진"/>);
+      imagePreview = (<img src={imagePreviewUrl} id="profile_img" className="profile_img" alt="프로필 사진"/>);
     }else{
-      imagePreview = (<img src={require('../../images/friends1.png')} id="profile_image" className="profile_image" alt="프로필 사진" />);
+      imagePreview = (<img src={require('../../images/friends1.png')} id="profile_img" className="profile_img" alt="프로필 사진" />);
     }
 
     return (

@@ -9,9 +9,27 @@
 #MyPage article .article_header span.author_location img {margin-top:-2px; width:auto; height:24px;}
 
 #MyPage article .article_body {background:#fff; border-bottom:1px solid #ddd;}
-#MyPage article .article_body .author_content_image {}
-#MyPage article .article_body .author_content_image img {width:100%; height:auto;}
+#MyPage article .article_body .author_content_image {overflow:hidden;}
+#MyPage article .article_body .author_content_image img {width:100%; height:auto; transition:all 0.8s ease;}
+#MyPage article .article_body .author_content_image img:hover {transition:all 0.8s ease; transform:scale(1.1, 1.1);}
+
+#MyPage article .article_body .author_content_image img#more {cursor:pointer;}
+
 #MyPage article .article_body .author_content {padding:20px;}
 #MyPage article .article_body .author_status {padding:7px 10px; border-top:1px solid #ddd; font-size:12px;}
 #MyPage article .article_body .author_status span {margin-left:10px;}
 #MyPage article .article_body .author_status span img {width:auto; height:15px;}
+
+/* 피드에 사진 클릭시 사진 확대 팝업 생성 */
+#MyPage #MorePopup {}
+#MyPage #MorePopup .more_detail {
+  position:fixed; top:50%; left:50%;
+  max-width:900px; max-height:450px; width:95%; height:90%;
+  transform:translate(-50%, -50%);
+  background:#fff;
+  z-index:200;
+}
+#MyPage #MorePopup .more_detail img {float:left; display:inline-block; width:60%; height:100%;}
+#MyPage #MorePopup .more_detail .more_comm {float:left; padding:25px; width:40%; height:100%; box-sizing:border-box;}
+#MyPage #MorePopup .curtain {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:100;}
+/* 피드에 사진 클릭시 사진 확대 팝업 생성 끝 */

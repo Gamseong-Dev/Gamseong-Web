@@ -45,13 +45,13 @@
 .react-tabs .ReactTabs__TabPanel .cont_wrap {margin-bottom:20px; padding:10px 20px;}
 .react-tabs .ReactTabs__TabPanel .cont_wrap h2 {margin-bottom:15px; font-size:18px;}
 .react-tabs .ReactTabs__TabPanel .cont_wrap p {display:inline-block; width:100px; height:50px; line-height:50px;}
-.react-tabs .ReactTabs__TabPanel .cont_wrap input {margin-bottom:10px;}
-.react-tabs .ReactTabs__TabPanel .cont_wrap img.profile_image {width:120px; height:120px; border:1px solid #ddd; border-radius:50%;}
+.react-tabs .ReactTabs__TabPanel .cont_wrap input {margin-bottom:10px; width:100%; height:30px;}
+.react-tabs .ReactTabs__TabPanel .cont_wrap .profile_image {display:inline-block;}
+.react-tabs .ReactTabs__TabPanel .cont_wrap img.profile_img {width:120px; height:120px; border:1px solid #ddd; border-radius:50%; cursor:pointer;}
 .react-tabs .ReactTabs__TabPanel button.submit {margin:10px 20px; padding:5px 20px;}
 
 /* #react-tabs-1은 홀수단위다 Ex) 1, 3, 5, ... */
-.react-tabs .ReactTabs__TabPanel#react-tabs-1 input {width:100%; height:30px;}
-.react-tabs .ReactTabs__TabPanel#react-tabs-1 input[type="file"] {display:block; margin-top:10px; margin-bottom:0; width:inherit; font-size:12px;}
+.react-tabs .ReactTabs__TabPanel#react-tabs-1 input[type="file"] {width:0; height:0;}
 
 .react-tabs .ReactTabs__TabPanel#react-tabs-3 label {display:inline-block; padding:10px 0;}
 .react-tabs .ReactTabs__TabPanel#react-tabs-3 input[type="checkbox"] {width:20px; height:20px; vertical-align:-5px;}
