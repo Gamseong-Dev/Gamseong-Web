@@ -79,6 +79,31 @@
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 
+.camera-box{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.camera {
+  display: flex;
+  /*position: absolute;*/
+  justify-content: center;
+  align-items: center;
+}
+.canvas{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 240px;
+  z-index: 2;
+}
+
+
+
 /* responsive - @media query */
 @media screen and (max-width: 1020px){
   .react-tabs {
