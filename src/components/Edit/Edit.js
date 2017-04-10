@@ -74,7 +74,10 @@ class ImageUpload extends Component {
     this.state = {
       file: '',
       imagePreviewUrl: '',
-      modalVisible: false
+      modalVisible: false,
+      cameraVisible: false,
+      canvas: 'none',
+      takingShot: false
     };
   }
 
@@ -89,7 +92,6 @@ class ImageUpload extends Component {
         file: file,
         imagePreviewUrl: reader.result,
         modalVisible: false,
-        cameraVisible: false
       });
     }
 
@@ -254,15 +256,22 @@ class ImageUpload extends Component {
           </div>
         </Modal>
         <Modal open={this.state.cameraVisible}>
-          <div className="camera">
-              <video id="video">Video stream not available.</video>
-              <button id="startbutton">Take photo</button>
+          <div className="modal camera-box">
+            <div className="camera">
+                <video id="video">Video stream not available.</video>
+                <canvas id="canvas" className="canvas" style={{display:this.state.canvas}}></canvas>
+            </div>
+            {console.log(this.state.canvas)}
+
+            {/* <div className="output">
+              <img id="photo" alt="The screen capture will appear in this box." />
+            </div> */}
+            {this.state.takingShot
+              ? <button onClick={() => this.setState({canvas: 'none', takingShot: false})}>다시찍기</button>
+              : <button id="startbutton" onClick={() => this.setState({canvas: '', takingShot: true})}>사진찍기</button>
+            }
+            <button onClick={() => this.setState({cameraVisible: false})}> 닫기</button>
           </div>
-          <canvas id="canvas"></canvas>
-          {/* <div className="output">
-            <img id="photo" alt="The screen capture will appear in this box." />
-          </div> */}
-          <button onClick={() => this.setState({cameraVisible: false})}> 닫기</button>
         </Modal>
       </div>
     );
