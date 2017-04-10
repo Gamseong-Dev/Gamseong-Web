@@ -26,7 +26,7 @@ export const getAccount = (param) => (dispatch) => {
 };
 
 export const userLogOut = () => (dispatch) => {
-  localStorage.setItem('userId', null)
+  localStorage.setItem('userId', "")
   localStorage.setItem('userAcct', null)
   localStorage.setItem('userName', null)
   localStorage.setItem('userImgUrl', null)
