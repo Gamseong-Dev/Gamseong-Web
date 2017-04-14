@@ -17,6 +17,9 @@ class Feed extends Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
+
+    const clickedImg = e.target.getAttribute('src')
+    localStorage.setItem('thisImg', clickedImg)
   }
 
   render(){
@@ -34,7 +37,7 @@ class Feed extends Component {
 
           <div className="article_body">
             <div className="author_content_image">
-              {feed.feed.imgUrl !== null? <img src={'http://52.78.110.20:8080' + feed.feed.imgUrl} id="more" onClick={this.togglePopup} alt="콘텐츠 이미지" /> : ''}
+              {feed.feed.imgUrl !== null? <img src={`http://52.78.110.20:8080${feed.feed.imgUrl}`} id="more" onClick={this.togglePopup} alt="콘텐츠 이미지" /> : ''}
             </div>
             <div className="author_content">
               {feed.feed.contents}
@@ -47,15 +50,19 @@ class Feed extends Component {
           <div className="article_comment">
             {/* {console.log(feed.reply)} */}
             {feed.reply.map((re, i) => (
-              <div className="comm" key={i}>
-                <img src={re.user.imageUrl === null ? require('../../images/person.png') : re.user.imageUrl } className="comm_img" alt="작성자 이미지" />
-                <span className="comm_name">{re.user.name}</span>
-                <p className="comm_content">{re.contents}</p>
+              <div>
+                <div className="comm" key={i}>
+                  <img src={re.user.imageUrl === null ? require('../../images/person.png') : re.user.imageUrl } className="comm_img" alt="작성자 이미지" />
+                  <span className="comm_name">{re.user.name}</span>
+                  <p className="comm_content">{re.contents}</p>
+                </div>
+                {re.contents.length > 0 ? <div className="comm_more"><button>댓글 더보기</button></div> : ''}
               </div>
-            ) )}
+            ))}
           </div>
         </article>
-        {this.state.showPopup ? <MorePopup closePopup={this.togglePopup} /> : null}
+        {this.state.showPopup ? <MorePopup
+          closePopup={this.togglePopup} /> : null}
       </div>
     ));
 
@@ -72,7 +79,7 @@ class MorePopup extends Component {
     return (
       <div id="MorePopup" onClick={this.props.closePopup}>
         <div className="more_detail">
-          <img src="" className="more_img" alt="사진 클릭시 확대 창" />
+          <img src={localStorage.getItem('thisImg')} className="more_img" alt="사진 클릭시 확대 창" />
           <div className="more_comm">댓글</div>
         </div>
         <div className="curtain"></div>

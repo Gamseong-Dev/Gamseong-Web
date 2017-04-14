@@ -49,6 +49,7 @@ class Header extends Component {
             </div>
             <div className="header_nav">
               <ul>
+                <li><button><img src={require('../../images/alert.png')} alt="알림 아이콘" /></button></li>
                 <li><button onClick={this.goMyPage}><img src={require('../../images/mypage.png')} alt="마이페이지 아이콘" /></button></li>
                 <li><button onClick={this.toggleModalProfileEdit}><img src={require('../../images/per.png')} alt="상태 아이콘" /></button></li>
                 <li><button onClick={this.toggleModalLogout}><img src={require('../../images/logout.png')} alt="로그아웃 아이콘" /></button></li>
