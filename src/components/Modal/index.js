@@ -18,7 +18,7 @@ class Modal extends Component {
     }
 
     let modalStyles = this.props.open ? styles.modalIsOpen : styles.modalIsClosed;
-    console.log(this.props.children);
+    // console.log(this.props.children);
 
     return (
       <div style={modalStyles}>{this.props.children}</div>
