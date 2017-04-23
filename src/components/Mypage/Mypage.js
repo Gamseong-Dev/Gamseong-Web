@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as actions from '../../actions/feeds'
-import Header from '../Header/Header';
-import Section from '../Section/Section';
-import Footer from '../Footer/Footer';
+import Section from '../Feed/Section';
 import './Mypage.css';
 
 
@@ -16,9 +14,7 @@ class Mypage extends Component {
     const {feeds} = this.props;
     return (
       <div id="MyPage">
-        <Header />
         <Section feeds={feeds} />
-        <Footer />
       </div>
     );
   }
