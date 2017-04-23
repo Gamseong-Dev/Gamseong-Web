@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Feed from '../Feed/Feed';
+import Feed from './Feed';
 import './Section.css';
 
 

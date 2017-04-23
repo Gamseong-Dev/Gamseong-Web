@@ -9,11 +9,9 @@ class Feed extends Component {
     this.state = {
       showPopup: false
     };
-
-    this.togglePopup = this.togglePopup.bind(this);
   }
 
-  togglePopup(){
+  togglePopup = (e) => {
     this.setState({
       showPopup: !this.state.showPopup
     });
@@ -23,10 +21,14 @@ class Feed extends Component {
   }
 
   render(){
+    // let userId = localStorage.getItem('userId'),
+    // userAcct = localStorage.getItem('userAcct');
+
+    console.log("localStorage",localStorage.getItem('userId'));
     const {feeds} = this.props;
-    console.log(feeds);
+    console.log("feeds",feeds);
     const article = feeds.map((feed, index) => (
-      <div id="article">
+      <div id="article" key={index}>
         <article key={index}>
           <div className="article_header">
             {feed.feed.user.imageUrl !== null? <img src={feed.feed.user.imageUrl} className="author_img" alt="작성자 이미지" /> : <img src={require('../../images/person.png')} className="author_img" alt="작성자 이미지" />}
@@ -48,7 +50,6 @@ class Feed extends Component {
           </div>
 
           <div className="article_comment">
-            {/* {console.log(feed.reply)} */}
             {feed.reply.map((re, i) => (
               <div>
                 <div className="comm" key={i}>

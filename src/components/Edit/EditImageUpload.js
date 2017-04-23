@@ -188,25 +188,21 @@ class EditImageUpload extends Component {
         <Modal open={this.state.modalVisible}>
           <div className="modal">
             <ul>
-              <li>
-                <button onClick={this.handleCamera}>
+              <li onClick={this.handleCamera}>
                   사진찍기
-                </button>
               </li>
-              <li>
-                <button onClick={() => this.setState({...this.defaultState})}>
+              <li onClick={() => this.setState({...this.defaultState})}>
+
                   현재 사진 삭제
-                </button>
+
               </li>
               <li>
                 <label> 사진업로드
                   <input type="file" onChange={(e)=>this.handleImageChange(e)} className='file'/>
                 </label>
               </li>
-              <li>
-                <button onClick={() => this.setState({modalVisible: false})}>
+              <li onClick={() => this.setState({modalVisible: false})}>
                   취소
-                </button>
               </li>
             </ul>
           </div>

@@ -25,6 +25,13 @@ export const getAccount = (param) => (dispatch) => {
       })
 };
 
+export const CheckUserStorage = () => (dispatch) => {
+  let user = localStorage.getItem('userId')
+  if(user){
+    dispatch({type: LOGIN.USER_LOG_IN})
+  }
+}
+
 export const userLogOut = () => (dispatch) => {
   localStorage.setItem('userId', "")
   localStorage.setItem('userAcct', null)

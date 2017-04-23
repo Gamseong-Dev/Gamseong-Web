@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class Section extends Component {
+class LoginSection extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -23,13 +23,6 @@ class Section extends Component {
   }
 
   render(){
-
-    // 로그아웃 한 후 다시 로그인 페이지로 돌아왔을 때 페이지 뒤로가기 막기
-    history.pushState(null, null, location.href);
-    window.onpopstate = function(e){
-      history.go(1);
-    }
-
     return (
       <div id="section">
         <section>
@@ -45,7 +38,7 @@ class Section extends Component {
             </form>
           </div>
           <div className="googleplay">
-            <a href="https://play.google.com/store/apps/details?id=com.ionicframework.gamseong7840931" target="_blank"><img src={require('../../../images/googleplay.png')} alt="구글플레이 이미지" /></a>
+            <a href="https://play.google.com/store/apps/details?id=com.ionicframework.gamseong7840931" target="_blank"><img src={require('../images/googleplay.png')} alt="구글플레이 이미지" /></a>
           </div>
         </section>
       </div>
@@ -53,4 +46,4 @@ class Section extends Component {
   }
 }
 
-export default Section
+export default LoginSection
