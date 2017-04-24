@@ -1,6 +1,5 @@
 import * as LOGIN from './types';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 
 
 const ROOT_URL = 'http://52.78.110.20:8080'
@@ -11,7 +10,6 @@ export const getAccount = (param) => (dispatch) => {
         console.log(result)
         if(result === 'fail'){
           dispatch({type: LOGIN.USER_LOG_IN_ERR})
-          browserHistory.push('login')
           alert('아이디 혹은 비밀번호를 다시 확인하세요.')
         }
         if(result === 'success'){
@@ -20,7 +18,6 @@ export const getAccount = (param) => (dispatch) => {
           localStorage.setItem('userAcct', response.data.user.account)
           localStorage.setItem('userName', response.data.user.name)
           localStorage.setItem('userImgUrl', response.data.user.imageUrl)
-          browserHistory.push('mypage')
         }
       })
 };

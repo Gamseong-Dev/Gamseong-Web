@@ -19,7 +19,7 @@ class EditImageUpload extends Component {
     canvas: 'none',
     takingShot: false
   }
-  handleImageChange(e){
+  handleImageChange = e => {
     e.preventDefault();
 
     let reader =  new FileReader();
@@ -38,7 +38,8 @@ class EditImageUpload extends Component {
   isSelectCamera = () => {
     this.setState({modalVisible: true})
   }
-  handleCamera = () => {
+  handleCamera = e => {
+    e.preventDefault()
     this.setState({modalVisible: false, cameraVisible : true })
 
     var _this = this; // 밖에 있는 this 를 복사해온 것임 ㅎㅎㅎㅎ
@@ -134,7 +135,7 @@ class EditImageUpload extends Component {
     // format data URL. By drawing it on an offscreen canvas and then
     // drawing that to the screen, we can change its size and/or apply
     // other changes before drawing it.
-    var data;
+
     function takepicture(btnName) {
       var context = canvas.getContext('2d');
       if (width && height) {
@@ -142,7 +143,7 @@ class EditImageUpload extends Component {
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
 
-        data = canvas.toDataURL('image/png');
+      var data = canvas.toDataURL('image/png');
         _this.setState({imagePreviewUrl: data})
         console.log(btnName, `data = ${data.substr(0,100)}`, `state = ${_this.state.imagePreviewUrl.substr(0,100)}`);
       } else {
@@ -172,7 +173,8 @@ class EditImageUpload extends Component {
     console.log("handleSetImage", this.state.imagePreviewUrl.substr(0,100));
     this.setState({
       imagePreviewUrl: this.state.imagePreviewUrl,
-      cameraVisible: false
+      cameraVisible: false,
+      takingShot: false
     })
   }
   render(){
