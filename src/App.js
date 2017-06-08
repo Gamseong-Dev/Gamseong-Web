@@ -7,9 +7,6 @@ import { MyFeed, Edit } from './components'
 import './App.css'
 
 
-// const Mypage = () => <div>myyyyyy</div>
-// const Edit = () => <div>수정할 꼬야~~~</div>
-
 class App extends Component {
   render() {
     let nav = [
