@@ -6,6 +6,7 @@ import reduxThunk from 'redux-thunk';
 import Async from './middlewares/async';
 import Routers from './Routers'
 import {CheckUserStorage} from './actions/login'
+import { AppContainer } from 'react-hot-loader'
 import './index.css';
 
 import reducers from './reducers';
@@ -16,9 +17,26 @@ const store = createStoreWithMiddleware(reducers, window.devToolsExtension ? win
 
 store.dispatch(CheckUserStorage())
 
+
 ReactDOM.render(
-  <Provider store={store}>
-    <Routers />
-  </Provider>,
+  <AppContainer>
+    <Provider store={store}>
+      <Routers />
+    </Provider>
+  </AppContainer>,
   document.getElementById('root')
 );
+
+if(module.hot) {
+  module.hot.accept('./Routers', () => {
+    const NextApp = require('./Routers').default;
+    ReactDOM.render(
+      <AppContainer>
+        <Provider store={store}>
+          <NextApp />
+        </Provider>
+      </AppContainer>,
+      document.getElementById('root')
+    )
+  })
+}
