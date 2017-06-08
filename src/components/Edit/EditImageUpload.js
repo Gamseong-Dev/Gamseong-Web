@@ -21,7 +21,7 @@ class EditImageUpload extends Component {
   componentWillMount(){
     this.setState({...this.defaultState})
   }
-  handleImageChange(e){
+  handleImageChange = e => {
     e.preventDefault();
 
     let reader =  new FileReader();
@@ -110,7 +110,6 @@ class EditImageUpload extends Component {
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     data = canvas.toDataURL('image/png');
-
     // console.log("from_clearphoto", data);
   }
   handleCanPlay = (video) => {

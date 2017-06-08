@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as actions from './actions/login'
 import { Route, Switch } from 'react-router-dom'
 import Layout from './Layout';
-import {Mypage, Edit} from './components'
+import { MyFeed, Edit } from './components'
 import './App.css'
 
 
@@ -13,7 +13,7 @@ import './App.css'
 class App extends Component {
   render() {
     let nav = [
-      {path:'mypage', component: Mypage, name: '마이페이지'},
+      {path:'mypage', component: MyFeed, name: '마이페이지'},
       {path:'edit', component: Edit, name: '마이페이지'},
     ]
     const { match } = this.props;
@@ -21,7 +21,7 @@ class App extends Component {
       <Layout {...this.props}>
         <Switch>
           {nav.map((n, i) => <Route key={i} path={`${match.url}/${n.path}`} component={n.component}/>)}
-          <Route exact path={match.url} component={Mypage}/>
+          <Route exact path={match.url} component={MyFeed}/>
         </Switch>
       </Layout>
     );
