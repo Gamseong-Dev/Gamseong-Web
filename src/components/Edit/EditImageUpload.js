@@ -9,14 +9,21 @@ import Modal from '../Modal';
 
 let width = 320,height = 0, streaming = false, data;
 class EditImageUpload extends Component {
-  state = {}
+
   defaultState = {
     file: '',
     imagePreviewUrl: '',
+    imageSelected: '',
     modalVisible: false,
     cameraVisible: false,
     canvas: 'none',
-    takingShot: false,
+    takeAfter: 'none',
+    takeBefore: '',
+  }
+  constructor(props){
+    super(props)
+    this.state = {}
+    this.handleTakePicture = this.handleTakePicture.bind(this)
   }
   componentWillMount(){
     this.setState({...this.defaultState})
@@ -30,7 +37,7 @@ class EditImageUpload extends Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result,
+        imageSelected: reader.result,
         modalVisible: false,
       });
     }
@@ -40,10 +47,13 @@ class EditImageUpload extends Component {
   isSelectCamera = () => {
     this.setState({modalVisible: true})
   }
+  handleCamera = () => {
+    this.setState({modalVisible: false, cameraVisible : true })
+    this.handleStartCamera()
+  }
+
   handleStartCamera = () => {
-    console.log("handleStartCamera 1");
     let video = this.refs.video, canvas = this.refs.canvas, startbutton = this.refs.startbutton
-    console.log("handleStartCamera startbutton", startbutton);
     navigator.getMedia = ( navigator.getUserMedia ||
                            navigator.webkitGetUserMedia ||
                            navigator.mozGetUserMedia ||
@@ -69,42 +79,31 @@ class EditImageUpload extends Component {
    );
    video.addEventListener('canplay', () => this.handleCanPlay(video), false)
    startbutton.addEventListener('click', () => this.handleTakePicture(canvas, video) , false);
-  //  console.log("handleStartCamera",startbutton);
-  //  console.log("handleStartCamera",video);
-  console.log("handleStartCamera 2");
 
-   this.handleClearPhoto(canvas)
   }
-  handleTakePicture = (canvas, video) => {
+  handleTakePicture(canvas, video){
     let selectbutton = this.refs.selectbutton;
-    this.setState({canvas: '', takingShot: true})
-    console.log("handleTakePicture state", this.state.takingShot);
-    // console.log(canvas, video);
-    console.log("handleTakePicture");
-    console.log("handleTakePicture canvas", canvas);
-    console.log("handleTakePicture selectbutton", selectbutton);
-    //  takepicture('사진찍기');
+
     let context = canvas.getContext('2d'), data;
     if (width && height) {
-      console.log("handleTakePicture IF");
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
 
       data = canvas.toDataURL('image/png');
-      // this.setState({imagePreviewUrl: data})
-      console.log("handleTakePicture", data.substr(0,100));
     } else {
-      console.log("handleTakePicture ELSE");
       this.handleClearPhoto(canvas)
     }
-
-    console.log("handleTakePicture addEventListener")
+    this.setState({
+      imagePreviewUrl: data,
+      canvas: '',
+      takeAfter: '',
+      takeBefore: 'none'
+    })
     selectbutton.addEventListener('click', () => this.handleSetImage(data) , false)
 
   }
   handleClearPhoto = (canvas) => {
-    console.log("handleClearPhoto");
     var context = canvas.getContext('2d');
     context.fillStyle = "#AAA";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -113,7 +112,6 @@ class EditImageUpload extends Component {
     // console.log("from_clearphoto", data);
   }
   handleCanPlay = (video) => {
-    console.log("handleCanPlay");
     // We will scale the photo width to this
 
     if (!streaming) {
@@ -139,128 +137,13 @@ class EditImageUpload extends Component {
       streaming = true;
     }
   }
-  handleCamera = () => {
-    console.log("handleCamera");
-    this.setState({modalVisible: false, cameraVisible : true })
-    
-    this.handleStartCamera()
 
-    // var _this = this; // 밖에 있는 this 를 복사해온 것임 ㅎㅎㅎㅎ
-    //
-    // var width = 320;    // We will scale the photo width to this
-    // var height = 0;     // This will be computed based on the input stream
-    //
-    // // |streaming| indicates whether or not we're currently streaming
-    // // video from the camera. Obviously, we start at false.
-    //
-    // var streaming = false;
-    //
-    // // The various HTML elements we need to configure or control. These
-    // // will be set by the startup() function.
-    //
-    // var video = null;
-    // var canvas = null;
-    // // var photo = null;
-    // var startbutton = null;
-    //
-    //
-    // function startup() {
-    //   video = document.getElementById('video');
-    //   canvas = document.getElementById('canvas');
-    //   startbutton = document.getElementById('startbutton');
-    //
-    //   navigator.getMedia = ( navigator.getUserMedia ||
-    //                          navigator.webkitGetUserMedia ||
-    //                          navigator.mozGetUserMedia ||
-    //                          navigator.msGetUserMedia);
-    //
-    //   navigator.getMedia(
-    //     {
-    //       video: true,
-    //       audio: false
-    //     },
-    //     function(stream) {
-    //       if (navigator.mozGetUserMedia) {
-    //         video.mozSrcObject = stream;
-    //       } else {
-    //         var vendorURL = window.URL || window.webkitURL;
-    //         video.src = vendorURL.createObjectURL(stream);
-    //       }
-    //       video.play();
-    //     },
-    //     function(err) {
-    //       console.log("An error occured! " + err);
-    //     }
-    //   );
-    //
-    //   video.addEventListener('canplay', function(ev){
-    //     if (!streaming) {
-    //       height = video.videoHeight / (video.videoWidth/width);
-    //       // Firefox currently has a bug where the height can't be read from
-    //       // the video, so we will make assumptions if this happens.
-    //
-    //       if (isNaN(height)) {
-    //         height = width / (4/3);
-    //       }
-    //
-    //       video.setAttribute('width', width);
-    //       video.setAttribute('height', height);
-    //       canvas.setAttribute('width', width);
-    //       canvas.setAttribute('height', height);
-    //       streaming = true;
-    //     }
-    //   }, false);
-    //   startbutton.addEventListener('click', function(ev){
-    //     ev.preventDefault();
-    //     takepicture('사진찍기');
-    //   }, false);
-    //   clearphoto()
-    //
-    // }
-    //
-    // // Fill the photo with an indication that none has been
-    // // captured.
-    //
-    // function clearphoto() {
-    //   var context = canvas.getContext('2d');
-    //   context.fillStyle = "#AAA";
-    //   context.fillRect(0, 0, canvas.width, canvas.height);
-    //
-    //   data = canvas.toDataURL('image/png');
-    //   console.log("from_clearphoto", data);
-    //   // _this.setState({imagePreviewUrl: undefined})
-    // }
-    //
-    // // Capture a photo by fetching the current contents of the video
-    // // and drawing it into a canvas, then converting that to a PNG
-    // // format data URL. By drawing it on an offscreen canvas and then
-    // // drawing that to the screen, we can change its size and/or apply
-    // // other changes before drawing it.
-    // var data;
-    // function takepicture(btnName) {
-    //   var context = canvas.getContext('2d');
-    //   console.log("takePicture", width, height);
-    //   if (width && height) {
-    //     canvas.width = width;
-    //     canvas.height = height;
-    //     context.drawImage(video, 0, 0, width, height);
-    //
-    //     data = canvas.toDataURL('image/png');
-    //     _this.setState({imagePreviewUrl: data})
-    //     console.log(btnName, `data = ${data.substr(0,100)}`, `state = ${_this.state.imagePreviewUrl.substr(0,100)}`);
-    //   } else {
-    //     clearphoto();
-    //   }
-    // }
-    // startup();
-  }
   renderTakeImg = () => {
-    let {imagePreviewUrl} = this.state;
-    if(imagePreviewUrl){
+    let {imageSelected} = this.state;
+    if(imageSelected){
       return (
         <div>
-          {console.log("render",imagePreviewUrl.substr(0,100))}
-          <img src={imagePreviewUrl} id="profile_img" className="profile_img" alt="프로필 사진"/>
+          <img src={imageSelected} id="profile_img" className="profile_img" alt="프로필 사진"/>
         </div>
       )
     }else{
@@ -272,28 +155,28 @@ class EditImageUpload extends Component {
     }
   }
   handleSetImage = (data) => {
-    console.log("handleSetImage");
-    console.log("handleSetImage Data", data.substr(0,100))
-    // console.log("handleSetImage", this.state.imagePreviewUrl.substr(0,100));
     this.setState({
-      imagePreviewUrl: data,
+      imagePreviewUrl: '',
+      imageSelected: data,
       modalVisible: false,
       cameraVisible: false,
       canvas: 'none',
-      takingShot: false
+      takeAfter: 'none',
+      takeBefore: ''
     })
   }
   handleCloseCamera = () => {
     this.setState({
-      imagePreviewUrl: this.state.imagePreviewUrl,
+      imagePreviewUrl: data,
+      imageSelected:'',
       modalVisible: false,
       cameraVisible: false,
       canvas: 'none',
-      takingShot: false
+      takeAfter: 'none',
+      takeBefore: ''
     })
   }
   render(){
-    console.log("render", this.state);
     return (
       <div>
         <div className="cont_wrap">
@@ -329,6 +212,10 @@ class EditImageUpload extends Component {
                 <canvas ref="canvas" className="canvas" style={{display:this.state.canvas}}></canvas>
             </div>
             <div ref="cameraBtns">
+              <button ref="selectbutton" style={{display: this.state.takeAfter}}>선택하기</button>
+              <button onClick={() => this.setState({canvas: 'none', takeAfter: 'none', takeBefore:'' })} style={{display: this.state.takeAfter}}>다시찍기</button>
+              <button ref="startbutton" style={{display: this.state.takeBefore}}>사진찍기</button>
+              <button onClick={this.handleCloseCamera} style={{display: this.state.takeBefore}}> 닫기</button>
             </div>
           </div>
         </Modal>
@@ -336,23 +223,5 @@ class EditImageUpload extends Component {
     );
   }
 }
-// onClick={() => this.setState({canvas: '', takingShot: true})}
+
 export default EditImageUpload;
-
-{/* <button ref="startbutton" >사진찍기</button>
-<button onClick={this.handleCloseCamera}> 닫기</button> */}
-
-//
-// {this.state.takingShot
-//   ? (<div>
-//       <button ref="selectbutton">선택하기</button>
-//       <button onClick={() => this.setState({canvas: 'none', takingShot: false })}>다시찍기</button>
-//     </div>
-//   )
-//   : (
-//     <div>
-//       <button ref="startbutton" >사진찍기</button>
-//       <button onClick={this.handleCloseCamera}> 닫기</button>
-//     </div>
-//   )
-// }
