@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import './Feed.css';
 import '../Comments/Comments.css';
+import FeedComment from './FeedComment'
+import FeedArticleHeader from './FeedArticleHeader'
 
 class FeedArticle extends PureComponent {
   state = {
@@ -16,13 +18,7 @@ class FeedArticle extends PureComponent {
     return (
       <div id="article">
         <article>
-          <div className="article_header">
-            {feed.user.imageUrl ? <img src={feed.user.imageUrl} className="author_img" alt="작성자 이미지" /> : <img src={require('../../images/person.png')} className="author_img" alt="작성자 이미지" />}
-            <span className="author_name">{feed.user.name}</span>
-            <span className="author_location"><img src={require('../../images/location.png')} className="location_ico" alt="위치 아이콘 이미지" />{feed.address}</span>
-            <span className="author_date">{feed.creationTime.split(' ')[0]}</span>
-          </div>
-
+          <FeedArticleHeader feed={feed} />
           <div className="article_body">
             <div className="author_content_image">
               {feed.imgUrl !== null? <img src={`http://52.78.110.20:8080${feed.imgUrl}`} id="more" onClick={this.togglePopup} alt="콘텐츠 이미지" /> : ''}
@@ -62,7 +58,7 @@ class MorePopup extends PureComponent {
       <div id="MorePopup" onClick={this.props.closePopup}>
         <div className="more_detail">
           <img src={`http://52.78.110.20:8080${this.props.feed.imgUrl}`} className="more_img" alt="사진 클릭시 확대 창" />
-          <div className="more_comm">댓글</div>
+          <FeedComment feed={this.props.feed}/>
         </div>
         <div className="curtain"></div>
       </div>
